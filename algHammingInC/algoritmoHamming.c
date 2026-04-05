@@ -3,8 +3,8 @@
 
 int main ()
 {
-    int opcao;
-    printf("---ALGORITMO DE HAMMING---");
+    int opcao, codificada, decodificada;
+    printf("---ALGORITMO DE HAMMING---\n");
     printf("1. Codificar mensagem\n");
     printf("2. Decodificar mensagem\n");
     printf("0. Sair\n");
@@ -13,12 +13,17 @@ int main ()
 
     switch(opcao) {
         case 1:
+            printf("Insira os bits da mensagem original (max 8 bits): ");
+            scanf("%d ,&codificada");
             printf("\nCodificando bits inseridos...\n");
-            
             // A logica para pedir os 8 bits e calcular a paridade vai aqui
             break;
         case 2:
+            printf("Insira os bits da mensagem codificada (max 8 bits): ");
+            scanf("%d ,&decodificada");
+         
             printf("\nDecodificando os bits...\n");
+
             // A logica para receber os bits e decodificar vai aqui
             break;
         case 0:
