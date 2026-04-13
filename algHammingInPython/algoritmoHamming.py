@@ -15,7 +15,9 @@ while True:
             continue
 
         msgOriginal = msgOriginal.zfill(8)
-        print("\nMensagem inserida padronizada para 8 bits: ", msgOriginal)
+        msgEspacada = " ".join(msgOriginal) 
+        print(f"\nMensagem inserida padronizada para 8 bits:\n{msgEspacada}")
+
 
         hamming = [0] * 12 #vetor com 12 posições preenchidas com 0, que sera o tamanho da msgCodificada
 
@@ -32,7 +34,7 @@ while True:
         hamming[10] = int(msgOriginal[6])
         hamming[11] = int(msgOriginal[7])
 
-        print("Mensagem inserida nas posições adequadas do conjunto a ser codificado: ", hamming)
+        print("\nMensagem inserida nas posições adequadas do conjunto a ser codificado:\n",hamming)
 
         print("\nCodificando...")
 
@@ -44,14 +46,23 @@ while True:
         hamming[7] = hamming[8] ^ hamming[9] ^ hamming[10] ^ hamming[11] #pos 8 = 2³ = 8
 
         #aqui pega e armazena na msgFinal = msgCodificada e exibe para
-        #o usuario de forma corrida como texto usando o .join.....
-        msgFinal = ''.join(map(str, hamming)) 
+        #o usuario de forma corrida como texto usando o .join..... que faz a transformação
+        #de vetor de inteiros para texto direto (str) map para pegar as posicoes e transformar em texto
+        #o que era [0, 1] numero vai virar ['0', '1'] texto, o join na verdade cola tudo junto aqui por isso '' antes
+        msgFinal = ' '.join(map(str, hamming)) 
         #exibindo a mensagem codificada com o comando "f" de f string formatando certin a exibicao
         #injetando direto a variavel msgFinal dentro do texto usando {}
-        print(f"\nMensagem final codificada (12 bits): {msgFinal}")
+        print(f"\nMensagem final codificada (12 bits):\n{msgFinal}")
 
-        print("\nOs bits de paridade foram inseridos nas posições: 1, 2, 4 e 8.")
-
+        # --- EXIBIÇÃO VISUAL ALINHADA ---
+        print("\n--- Mapa de Construção da Mensagem ---")
+        print("Posições:  01 02 03 04 05 06 07 08 09 10 11 12")
+        print("Função:    P1 P2 D  P4 D  D  D  P8 D  D  D  D ")
+        
+        # O "  ".join (com dois espaços nas aspas) cria a distância exata para alinhar com os números duplos de cima
+        linha_bits = "  ".join(map(str, hamming))
+        print(f"Bits:       {linha_bits}")
+        print("\nLegenda: \nP = Bit de Paridade | D = Bit de Dado original")
         
     elif opcao == '2':
         print("\nInsira o conjunto de bits da mensagem codificada: ")
@@ -64,11 +75,10 @@ while True:
         
     elif opcao == '0':
         print("\nEncerrando o programa...\nObrigado, Deus abençoe")
-        break  # O break quebra o laço while e finaliza o programa
-        
+        break          
     else:
         print("\nOpção inválida!")
         print("\nDigite: ")
         print("\n0 para fechar o programa;")
         print("\n1 para codificar o conjunto de bits;")
-        print("\n2 para decodificar o conjunto de bits.\n")#
+        print("\n2 para decodificar o conjunto de bits.\n")
