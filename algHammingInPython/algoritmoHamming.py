@@ -34,6 +34,23 @@ while True:
 
         print("Mensagem inserida nas posições adequadas do conjunto a ser codificado: ", hamming)
 
+        print("\nCodificando...")
+
+        # cálculo dos bits de paridade usando XOR que é (^), com cada bit e armazenando
+        #nas posicoes reservadas anteriormente para o bit de paridade (1, 2, 4 e 8 que sao indices 0, 1, 3 e 7)
+        hamming[0] = hamming[2] ^ hamming[4] ^ hamming[6] ^ hamming[8] ^ hamming[10] #pos 1 = 2⁰ = 1
+        hamming[1] = hamming[2] ^ hamming[5] ^ hamming[6] ^ hamming[9] ^ hamming[10] #pos 2 = 2¹ = 2
+        hamming[3] = hamming[4] ^ hamming[5] ^ hamming[6] ^ hamming[11] #pos 4 = 2² = 4
+        hamming[7] = hamming[8] ^ hamming[9] ^ hamming[10] ^ hamming[11] #pos 8 = 2³ = 8
+
+        #aqui pega e armazena na msgFinal = msgCodificada e exibe para
+        #o usuario de forma corrida como texto usando o .join.....
+        msgFinal = ''.join(map(str, hamming)) 
+        #exibindo a mensagem codificada com o comando "f" de f string formatando certin a exibicao
+        #injetando direto a variavel msgFinal dentro do texto usando {}
+        print(f"\nMensagem final codificada (12 bits): {msgFinal}")
+
+        print("\nOs bits de paridade foram inseridos nas posições: 1, 2, 4 e 8.")
 
         
     elif opcao == '2':
