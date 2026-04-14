@@ -6,7 +6,7 @@ from tkinter import messagebox
 def calcular_r(m):
     """Calcula a quantidade de bits de paridade necessários."""
     r = 0
-    while (2**r < m + r + 1):
+    while (2**r < m + r + 1): #aqui é a formula para calcuar os bits de paridade, tem 2 (dois) ** por conta que é potencia de 2
         r += 1
     return r
 
