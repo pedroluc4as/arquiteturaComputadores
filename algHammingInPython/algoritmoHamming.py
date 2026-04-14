@@ -18,7 +18,6 @@ while True:
         msgEspacada = " ".join(msgOriginal) 
         print(f"\nMensagem inserida padronizada para 8 bits:\n{msgEspacada}")
 
-
         hamming = [0] * 12 #vetor com 12 posições preenchidas com 0, que sera o tamanho da msgCodificada
 
         #disposicao da mensagem inserida nos campos de dados, lembrando que os bits de paridade
